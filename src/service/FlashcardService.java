@@ -1,7 +1,6 @@
 package service;
 
 import model.Flashcard;
-import model.FlashcardDeck;
 
 import java.util.HashMap;
 import java.util.Map;

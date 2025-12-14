@@ -1,7 +1,6 @@
 package model;
 
 public class Flashcard {
-
     private String question;
     private String answer;
 
@@ -10,11 +9,7 @@ public class Flashcard {
         this.answer = answer;
     }
 
-    public String getQuestion() {
-        return question;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
+    public String getQuestion() { return question; }
+    public String getAnswer() { return answer; }
 }
+
