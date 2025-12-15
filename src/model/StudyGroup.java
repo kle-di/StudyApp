@@ -5,26 +5,17 @@ import java.util.Set;
 import java.util.UUID;
 
 public class StudyGroup {
-
-    private String id;
+    private int id;
     private String name;
-    private Set<String> memberIds;
+    private String description;
 
-    public StudyGroup(String name) {
-        this.id = UUID.randomUUID().toString();
+    public StudyGroup(int id, String name, String description) {
+        this.id = id;
         this.name = name;
-        this.memberIds = new HashSet<>();
+        this.description = description;
     }
 
-    public void addMember(User user) {
-        memberIds.add(user.getId());
-    }
-
-    public boolean isMember(User user) {
-        return memberIds.contains(user.getId());
-    }
-
-    public String getName() {
-        return name;
-    }
+    public int getId() { return id; }
+    public String getName() { return name; }
+    public String getDescription() { return description; }
 }
