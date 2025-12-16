@@ -31,4 +31,7 @@ public class QuizzService {
     public List<Quizz> listAll() {
         return quizzRepository.findAll();
     }
+
+    public void answerQuestion(Quizz quiz, QuizQuestion question, String answer) {
+    }
 }

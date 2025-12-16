@@ -1,6 +1,7 @@
 // service/StudyGroupService.java
 package service;
 
+import model.Quizz;
 import model.StudyGroup;
 import repository.StudyGroupRepository;
 
@@ -32,5 +33,8 @@ public class StudyGroupService {
 
     public Set<Integer> getMembers(int groupId) {
         return Collections.unmodifiableSet(members.getOrDefault(groupId, Collections.emptySet()));
+    }
+
+    public void addQuizzToGroup(StudyGroup group, Quizz quiz) {
     }
 }
