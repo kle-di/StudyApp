@@ -1,6 +1,12 @@
 package util;
 
-public class Validator {
+/**
+ * Simple validation utilities.
+ */
+public final class Validator {
+
+    private Validator() {
+    }
 
     public static boolean isValidUsername(String username) {
         return username != null && username.trim().length() >= 3;

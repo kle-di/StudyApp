@@ -5,9 +5,15 @@ import model.Flashcard;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * In-memory repository for flashcards.
+ */
 public class FlashcardRepository {
 
     private final List<Flashcard> flashcards = new ArrayList<>();
+
+    public FlashcardRepository() {
+    }
 
     public void add(Flashcard flashcard) {
         flashcards.add(flashcard);

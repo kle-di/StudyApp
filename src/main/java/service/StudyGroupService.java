@@ -1,12 +1,18 @@
-// service/StudyGroupService.java
 package service;
 
-import model.Quizz;
+import model.Quiz;
 import model.StudyGroup;
 import repository.StudyGroupRepository;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
+/**
+ * Manages study groups and their members.
+ */
 public class StudyGroupService {
 
     private final StudyGroupRepository groupRepository;
@@ -27,7 +33,9 @@ public class StudyGroupService {
     }
 
     public void joinGroup(int groupId, int userId) {
-        if (groupRepository.findById(groupId) == null) throw new IllegalArgumentException("Group not found");
+        if (groupRepository.findById(groupId) == null) {
+            throw new IllegalArgumentException("Group not found");
+        }
         members.computeIfAbsent(groupId, k -> new HashSet<>()).add(userId);
     }
 
@@ -35,6 +43,6 @@ public class StudyGroupService {
         return Collections.unmodifiableSet(members.getOrDefault(groupId, Collections.emptySet()));
     }
 
-    public void addQuizzToGroup(StudyGroup group, Quizz quiz) {
+    public void addQuizToGroup(StudyGroup group, Quiz quiz) {
     }
 }

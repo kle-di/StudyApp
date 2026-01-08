@@ -5,9 +5,15 @@ import model.Flashcard;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Manages a single flashcard deck in memory.
+ */
 public class FlashcardDeckService {
 
     private final List<Flashcard> deck = new ArrayList<>();
+
+    public FlashcardDeckService() {
+    }
 
     public void addFlashcard(String question, String answer) {
         Flashcard flashcard = new Flashcard(question, answer);

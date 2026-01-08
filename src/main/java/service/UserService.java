@@ -5,6 +5,9 @@ import repository.UserRepository;
 
 import java.util.List;
 
+/**
+ * User operations over the repository.
+ */
 public class UserService {
 
     private final UserRepository userRepository;

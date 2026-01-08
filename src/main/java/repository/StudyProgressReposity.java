@@ -1,25 +1,31 @@
 package repository;
 
-import model.StudyProgress;
+import model.Progress;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * In-memory repository for study progress.
+ */
 public class StudyProgressReposity {
 
-    private final List<StudyProgress> progresses = new ArrayList<>();
+    private final List<Progress> progresses = new ArrayList<>();
 
-    public void add(StudyProgress progress) {
+    public StudyProgressReposity() {
+    }
+
+    public void add(Progress progress) {
         progresses.add(progress);
     }
 
-    public List<StudyProgress> findAll() {
+    public List<Progress> findAll() {
         return progresses;
     }
 
-    public StudyProgress findByUserAndQuizz(int userId, int quizzId) {
-        for (StudyProgress p : progresses) {
-            if (p.getUserId() == userId && p.getQuizzId() == quizzId) {
+    public Progress findByUserId(String userId) {
+        for (Progress p : progresses) {
+            if (p.getUserId().equals(userId)) {
                 return p;
             }
         }

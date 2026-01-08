@@ -2,10 +2,12 @@ package util;
 
 import java.security.MessageDigest;
 
-public class PasswordHasher {
+/**
+ * Utility for hashing passwords.
+ */
+public final class PasswordHasher {
 
     private PasswordHasher() {
-        // utility class
     }
 
     public static String hash(String password) {
@@ -18,7 +20,6 @@ public class PasswordHasher {
                 sb.append(String.format("%02x", b));
             }
             return sb.toString();
-
         } catch (Exception e) {
             throw new RuntimeException("Failed to hash password", e);
         }

@@ -1,22 +1,29 @@
 package service;
 
 import model.Flashcard;
+import model.FlashcardDeck;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class FlashcardService {
+/**
+ * Manages flashcard decks in memory.
+ */
+public class FlashcardService implements FlashcardServicePort {
 
-    private Map<String, FlashcardDeck> decks = new HashMap<>();
+    private final Map<String, FlashcardDeck> decks = new HashMap<>();
 
-    // Krijon nje deck
+    public FlashcardService() {
+    }
+
+    @Override
     public FlashcardDeck createDeck(String title, String ownerId) {
         FlashcardDeck deck = new FlashcardDeck(title, ownerId);
         decks.put(deck.getId(), deck);
         return deck;
     }
 
-    // Shton flashcard ne deck
+    @Override
     public void addFlashcard(String deckId, String question, String answer) {
         FlashcardDeck deck = decks.get(deckId);
         if (deck == null) {
@@ -25,12 +32,12 @@ public class FlashcardService {
         deck.addCard(new Flashcard(question, answer));
     }
 
-    // Merr nje deck
+    @Override
     public FlashcardDeck getDeck(String deckId) {
         return decks.get(deckId);
     }
 
-    // Numeron flashcards (funksionalitet REAL)
+    @Override
     public int getFlashcardCount(String deckId) {
         FlashcardDeck deck = decks.get(deckId);
         if (deck == null) {

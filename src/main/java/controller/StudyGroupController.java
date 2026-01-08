@@ -1,15 +1,17 @@
-
 package controller;
 
-import service.StudyGroupService;
+import model.Quiz;
 import model.StudyGroup;
-import model.Quizz;
+import service.StudyGroupService;
 
-public class studygroupcontroller {
+/**
+ * Controller for study group actions.
+ */
+public class StudyGroupController {
 
     private final StudyGroupService studyGroupService;
 
-    public studygroupcontroller(StudyGroupService studyGroupService) {
+    public StudyGroupController(StudyGroupService studyGroupService) {
         this.studyGroupService = studyGroupService;
     }
 
@@ -21,8 +23,8 @@ public class studygroupcontroller {
         studyGroupService.joinGroup(groupId, userId);
     }
 
-    public void addQuizzToGroup(StudyGroup group, Quizz quiz) {
-        studyGroupService.addQuizzToGroup(group, quiz);
+    public void addQuizToGroup(StudyGroup group, Quiz quiz) {
+        studyGroupService.addQuizToGroup(group, quiz);
     }
 }
 

@@ -1,15 +1,18 @@
 package controller;
 
-import service.UserService;
 import model.User;
+import service.UserService;
 
 import java.util.List;
 
-public class usercontroller {
+/**
+ * Controller for user actions.
+ */
+public class UserController {
 
     private final UserService userService;
 
-    public usercontroller(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 

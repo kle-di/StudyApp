@@ -5,9 +5,15 @@ import model.Question;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * In-memory repository for questions.
+ */
 public class QuestionReposity {
 
     private final List<Question> questions = new ArrayList<>();
+
+    public QuestionReposity() {
+    }
 
     public void add(Question question) {
         questions.add(question);

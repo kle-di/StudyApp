@@ -2,17 +2,23 @@ package app;
 
 import model.Flashcard;
 import model.FlashcardDeck;
-import model.StudyProgress;
+import model.Progress;
 import service.FlashcardService;
+import service.FlashcardServicePort;
+import service.LoggingFlashcardService;
 import service.ProgressService;
 
 import java.util.Scanner;
 
+/**
+ * Console entry point for the study app.
+ */
 public class Main {
 
     public static void main(String[] args) {
 
-        FlashcardService flashcardService = new FlashcardService();
+        FlashcardServicePort flashcardService =
+                new LoggingFlashcardService(new FlashcardService());
         ProgressService progressService = new ProgressService();
         Scanner scanner = new Scanner(System.in);
 
@@ -50,7 +56,7 @@ public class Main {
 
         // -------- STUDY MODE --------
         System.out.println("\n--- Study Mode ---");
-        for (Flashcard card : deck.getCards()) {
+        for (Flashcard card : deck) {
             System.out.println("Q: " + card.getQuestion());
             System.out.print("Press ENTER to see answer...");
             scanner.nextLine();
@@ -74,12 +80,12 @@ public class Main {
         }
 
         // -------- PROGRESS SUMMARY --------
-        StudyProgress progress = progressService.getProgress(userId);
+        Progress progress = progressService.getProgress(userId);
 
         System.out.println("\n--- Progress Summary ---");
         System.out.println("User ID: " + userId);
         System.out.println("Flashcards studied: " + progress.getFlashcardsStudied());
-        System.out.println("Quizzes completed: " + progress.getQuizzesCompleted());
+        System.out.println("Quizes completed: " + progress.getQuizesCompleted());
 
         System.out.println("\n=== Session Ended ===");
         scanner.close();

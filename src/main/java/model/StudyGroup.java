@@ -1,13 +1,13 @@
 package model;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
-
+/**
+ * Represents a study group.
+ */
 public class StudyGroup {
-    private int id;
-    private String name;
-    private String description;
+
+    private final int id;
+    private final String name;
+    private final String description;
 
     public StudyGroup(int id, String name, String description) {
         this.id = id;
@@ -15,7 +15,15 @@ public class StudyGroup {
         this.description = description;
     }
 
-    public int getId() { return id; }
-    public String getName() { return name; }
-    public String getDescription() { return description; }
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

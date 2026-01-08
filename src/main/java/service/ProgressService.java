@@ -1,29 +1,35 @@
 package service;
 
-import model.StudyProgress;
+import model.Progress;
 
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Tracks progress for multiple users.
+ */
 public class ProgressService {
 
-    private Map<String, StudyProgress> progressMap = new HashMap<>();
+    private final Map<String, Progress> progressMap = new HashMap<>();
 
-    private StudyProgress getOrCreate(String userId) {
-        return progressMap.computeIfAbsent(userId, StudyProgress::new);
+    public ProgressService() {
+    }
+
+    private Progress getOrCreate(String userId) {
+        return progressMap.computeIfAbsent(userId, Progress::new);
     }
 
     public void recordFlashcards(String userId, int count) {
-        StudyProgress progress = getOrCreate(userId);
+        Progress progress = getOrCreate(userId);
         progress.addFlashcards(count);
     }
 
     public void recordQuizCompletion(String userId) {
-        StudyProgress progress = getOrCreate(userId);
-        progress.incrementQuizzes();
+        Progress progress = getOrCreate(userId);
+        progress.incrementQuizes();
     }
 
-    public StudyProgress getProgress(String userId) {
+    public Progress getProgress(String userId) {
         return progressMap.get(userId);
     }
 }

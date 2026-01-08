@@ -1,15 +1,24 @@
 package model;
 
+/**
+ * Single flashcard with a question and answer.
+ */
 public class Flashcard {
-    private String question;
-    private String answer;
+
+    private final String question;
+    private final String answer;
 
     public Flashcard(String question, String answer) {
         this.question = question;
         this.answer = answer;
     }
 
-    public String getQuestion() { return question; }
-    public String getAnswer() { return answer; }
+    public String getQuestion() {
+        return question;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
 }
 

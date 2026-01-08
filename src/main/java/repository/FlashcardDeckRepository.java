@@ -5,9 +5,15 @@ import model.FlashcardDeck;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * In-memory repository for flashcard decks.
+ */
 public class FlashcardDeckRepository {
 
     private final List<FlashcardDeck> decks = new ArrayList<>();
+
+    public FlashcardDeckRepository() {
+    }
 
     public void add(FlashcardDeck deck) {
         decks.add(deck);

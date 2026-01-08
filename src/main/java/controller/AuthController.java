@@ -1,13 +1,16 @@
 package controller;
 
-import service.AuthService;
 import model.User;
+import service.AuthService;
 
-public class authcontroller {
+/**
+ * Controller for authentication flows.
+ */
+public class AuthController {
 
     private final AuthService authService;
 
-    public authcontroller(AuthService authService) {
+    public AuthController(AuthService authService) {
         this.authService = authService;
     }
 

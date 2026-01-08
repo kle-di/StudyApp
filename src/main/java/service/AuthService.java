@@ -1,15 +1,18 @@
 package service;
 
-import model.User;
-import repository.UserRepository;
 import exception.AuthException;
 import exception.ValidationException;
+import model.User;
+import repository.UserRepository;
 import util.PasswordHasher;
 import util.Validator;
 
+/**
+ * Handles authentication and registration.
+ */
 public class AuthService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public AuthService(UserRepository userRepository) {
         this.userRepository = userRepository;
