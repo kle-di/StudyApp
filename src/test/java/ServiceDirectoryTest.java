@@ -36,28 +36,22 @@ public class ServiceDirectoryTest {
     @Test
     void courseServiceCoversLookups() {
         CourseService service = new CourseService(new CourseRepository());
-
         List<Course> courses = service.getAllCourses();
-
         assertEquals(3, courses.size());
         assertEquals("Java Fundamentals", service.getCourseById(1).getTitle());
         assertNull(service.getCourseById(999));
     }
-
     @Test
     void enrollmentServiceCoversEnrollments() {
         EnrollmentService service = new EnrollmentService(new EnrollmentRepository());
-
         Enrollment first = service.enroll("user-1", 1);
         Enrollment second = service.enroll("user-1", 1);
-
         assertNotNull(first);
         assertNotNull(second);
         assertEquals(first.getId(), second.getId());
         assertTrue(service.isEnrolled("user-1", 1));
         assertEquals(1, service.getEnrollmentsByUser("user-1").size());
     }
-
     @Test
     void flashcardServiceCoversDecks() {
         FlashcardService service = new FlashcardService(new FlashcardDeckRepository());
@@ -67,13 +61,10 @@ public class ServiceDirectoryTest {
         assertEquals(1, decks.size());
         assertEquals(2, decks.get(0).getCards().size());
     }
-
     @Test
     void materialServiceCoversMaterials() {
         MaterialService service = new MaterialService(new MaterialRepository());
-
         List<Material> materials = service.getMaterialsByTopic(101);
-
         assertEquals(2, materials.size());
     }
 

@@ -8,6 +8,7 @@ import controller.TopicController;
 import controller.UserController;
 import model.Course;
 import model.FlashcardDeck;
+import model.Material;
 import model.Progress;
 import model.Quiz;
 import model.Topic;
@@ -33,6 +34,7 @@ import service.UserService;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 public class StudyFlowTest {
     @Test
     void endToEndStudyFlowUpdatesProgress() {
@@ -46,14 +48,15 @@ public class StudyFlowTest {
         ProgressController progressController = new ProgressController(new ProgressService(new ProgressRepository()));
 
         User user = userController.listUsers().get(0);
-        Course course = courseController.getCourseById(1);
-        assertNotNull(course);
+        Course course = courseController.listCourses().get(0);
         enrollmentController.enroll(user.getId(), course.getId());
+        assertTrue(enrollmentController.isEnrolled(user.getId(), course.getId()));
 
         Topic topic = topicController.listTopicsByCourse(course.getId()).get(0);
         progressController.recordTopicVisit(user.getId());
 
-        assertFalse(materialController.listMaterialsByTopic(topic.getId()).isEmpty());
+        Material material = materialController.listMaterialsByTopic(topic.getId()).get(0);
+        assertNotNull(material);
 
         FlashcardDeck deck = flashcardController.listDecksByTopic(topic.getId()).get(0);
         int reviewed = deck.getCards().size();
