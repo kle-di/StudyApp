@@ -11,4 +11,8 @@ public class AppConfig {
     public String getAppName() {
         return "StudyApp";
     }
+
+    public String getTagline() {
+        return "Courses, topics, and practice.";
+    }
 }

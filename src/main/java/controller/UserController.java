@@ -16,15 +16,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    public void createUser(User user) {
-        userService.createUser(user);
-    }
-
-    public List<User> getAllUsers() {
+    public List<User> listUsers() {
         return userService.getAllUsers();
     }
 
-    public User getUserByEmail(String email) {
+    public User findByEmail(String email) {
         return userService.getUserByEmail(email);
     }
 }

@@ -1,13 +1,22 @@
 package controller;
 
+import model.FlashcardDeck;
+import service.FlashcardService;
+
+import java.util.List;
+
 /**
- * Controller for flashcard UI actions.
+ * Controller for flashcard actions.
  */
 public class FlashcardController {
 
-    public FlashcardController() {
+    private final FlashcardService flashcardService;
+
+    public FlashcardController(FlashcardService flashcardService) {
+        this.flashcardService = flashcardService;
     }
 
-    public void init() {
+    public List<FlashcardDeck> listDecksByTopic(int topicId) {
+        return flashcardService.getDecksByTopic(topicId);
     }
 }

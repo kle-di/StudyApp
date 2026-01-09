@@ -10,13 +10,11 @@ public class User {
     private final String id;
     private String name;
     private final String email;
-    private final String password;
 
-    public User(String name, String email, String password) {
+    public User(String name, String email) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.email = email;
-        this.password = password;
     }
 
     public String getId() {
@@ -29,10 +27,6 @@ public class User {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public void updateName(String newName) {

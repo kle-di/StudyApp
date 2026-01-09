@@ -13,14 +13,9 @@ public class UserRepository {
     private final List<User> users = new ArrayList<>();
 
     public UserRepository() {
-    }
-
-    public void add(User user) {
-        users.add(user);
-    }
-
-    public void save(User user) {
-        add(user);
+        users.add(new User("Avery", "avery@example.com"));
+        users.add(new User("Morgan", "morgan@example.com"));
+        users.add(new User("Riley", "riley@example.com"));
     }
 
     public List<User> findAll() {
@@ -28,9 +23,9 @@ public class UserRepository {
     }
 
     public User findByEmail(String email) {
-        for (User u : users) {
-            if (u.getEmail().equalsIgnoreCase(email)) {
-                return u;
+        for (User user : users) {
+            if (user.getEmail().equalsIgnoreCase(email)) {
+                return user;
             }
         }
         return null;

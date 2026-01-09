@@ -1,64 +1,42 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 
 /**
- * Collection of flashcards owned by a user.
+ * Flashcard deck tied to a topic.
  */
-public class FlashcardDeck implements Iterable<Flashcard> {
+public class FlashcardDeck {
 
-    private final String id;
+    private final int id;
+    private final int topicId;
     private final String title;
-    private final String ownerId;
-    private final List<Flashcard> cards;
+    private final List<Flashcard> cards = new ArrayList<>();
 
-    public FlashcardDeck(String title, String ownerId) {
-        this.id = UUID.randomUUID().toString();
+    public FlashcardDeck(int id, int topicId, String title) {
+        this.id = id;
+        this.topicId = topicId;
         this.title = title;
-        this.ownerId = ownerId;
-        this.cards = new ArrayList<>();
     }
 
     public void addCard(Flashcard card) {
         cards.add(card);
     }
 
-    public List<Flashcard> getCards() {
-        return cards;
+    public int getId() {
+        return id;
     }
 
-    public String getId() {
-        return id;
+    public int getTopicId() {
+        return topicId;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getOwnerId() {
-        return ownerId;
-    }
-
-    @Override
-    public Iterator<Flashcard> iterator() {
-        return new FlashcardIterator();
-    }
-
-    private final class FlashcardIterator implements Iterator<Flashcard> {
-        private int index;
-
-        @Override
-        public boolean hasNext() {
-            return index < cards.size();
-        }
-
-        @Override
-        public Flashcard next() {
-            return cards.get(index++);
-        }
+    public List<Flashcard> getCards() {
+        return Collections.unmodifiableList(cards);
     }
 }
-

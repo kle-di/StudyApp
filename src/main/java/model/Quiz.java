@@ -1,20 +1,22 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
 
 /**
- * Quiz composed of questions.
+ * Quiz tied to a topic.
  */
-public class Quiz implements Iterable<Question> {
+public class Quiz {
 
     private final int id;
+    private final int topicId;
     private final String title;
     private final List<Question> questions = new ArrayList<>();
 
-    public Quiz(int id, String title) {
+    public Quiz(int id, int topicId, String title) {
         this.id = id;
+        this.topicId = topicId;
         this.title = title;
     }
 
@@ -22,34 +24,19 @@ public class Quiz implements Iterable<Question> {
         questions.add(question);
     }
 
-    public List<Question> getQuestions() {
-        return questions;
-    }
-
     public int getId() {
         return id;
+    }
+
+    public int getTopicId() {
+        return topicId;
     }
 
     public String getTitle() {
         return title;
     }
 
-    @Override
-    public Iterator<Question> iterator() {
-        return new QuestionIterator();
-    }
-
-    private final class QuestionIterator implements Iterator<Question> {
-        private int index;
-
-        @Override
-        public boolean hasNext() {
-            return index < questions.size();
-        }
-
-        @Override
-        public Question next() {
-            return questions.get(index++);
-        }
+    public List<Question> getQuestions() {
+        return Collections.unmodifiableList(questions);
     }
 }

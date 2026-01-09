@@ -1,24 +1,23 @@
 package model;
 
 /**
- * Single flashcard with a question and answer.
+ * Single flashcard with a prompt and answer.
  */
 public class Flashcard {
 
-    private final String question;
-    private final String answer;
+    private final String front;
+    private final String back;
 
-    public Flashcard(String question, String answer) {
-        this.question = question;
-        this.answer = answer;
+    public Flashcard(String front, String back) {
+        this.front = front;
+        this.back = back;
     }
 
-    public String getQuestion() {
-        return question;
+    public String getFront() {
+        return front;
     }
 
-    public String getAnswer() {
-        return answer;
+    public String getBack() {
+        return back;
     }
 }
-

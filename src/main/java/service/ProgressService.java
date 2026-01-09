@@ -1,35 +1,32 @@
 package service;
 
 import model.Progress;
-
-import java.util.HashMap;
-import java.util.Map;
+import repository.ProgressRepository;
 
 /**
- * Tracks progress for multiple users.
+ * Progress operations over the repository.
  */
 public class ProgressService {
 
-    private final Map<String, Progress> progressMap = new HashMap<>();
+    private final ProgressRepository progressRepository;
 
-    public ProgressService() {
-    }
-
-    private Progress getOrCreate(String userId) {
-        return progressMap.computeIfAbsent(userId, Progress::new);
-    }
-
-    public void recordFlashcards(String userId, int count) {
-        Progress progress = getOrCreate(userId);
-        progress.addFlashcards(count);
-    }
-
-    public void recordQuizCompletion(String userId) {
-        Progress progress = getOrCreate(userId);
-        progress.incrementQuizes();
+    public ProgressService(ProgressRepository progressRepository) {
+        this.progressRepository = progressRepository;
     }
 
     public Progress getProgress(String userId) {
-        return progressMap.get(userId);
+        return progressRepository.getOrCreate(userId);
+    }
+
+    public void recordTopicVisit(String userId) {
+        progressRepository.getOrCreate(userId).recordTopicVisit();
+    }
+
+    public void recordFlashcardsReviewed(String userId, int count) {
+        progressRepository.getOrCreate(userId).addFlashcardsReviewed(count);
+    }
+
+    public void recordQuizResult(String userId, int correct, int total) {
+        progressRepository.getOrCreate(userId).recordQuizResult(correct, total);
     }
 }
